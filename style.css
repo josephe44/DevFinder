@@ -50,11 +50,19 @@ body {
   color: #0079fe;
 }
 
+.search-input {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
 input {
+  width: 100%;
   padding: 1rem 0;
   background-color: #1f2a48;
-  color: #ffffff;
+  color: #ffff;
   border: none;
+  margin: 0 0.2rem;
 }
 input::placeholder {
   color: #f4f4f4;
@@ -102,7 +110,8 @@ button {
 }
 
 .card-profile-name h3 {
-  font-size: 1rem;
+  width: 100%;
+  font-size: 0.9rem;
   margin: 0;
 }
 .card-profile-name p {
@@ -111,8 +120,8 @@ button {
   margin: 0;
 }
 .card-profile-date p {
-  font-size: 0.8rem;
-  margin: 0;
+  font-size: 0.6rem;
+  margin: 0.5rem 0 0 0;
 }
 
 .card-body p {
@@ -146,18 +155,19 @@ button {
 }
 
 .card-social {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: left;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   margin-top: 2rem;
 }
 .social-item {
-  margin: 0.2rem 0;
+  margin: 0.7rem 0;
 }
 .social-item i {
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   margin-right: 1rem;
 }
 .social-item span {

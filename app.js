@@ -7,7 +7,7 @@ input.addEventListener('click', clearDisplay)
 
 async function getGitHubUser() {
   if (input.value === '') {
-    alert('Please enter a username')
+    enterUsername()
   } else {
     const user = input.value
     const profileResponse = await fetch(`https://api.github.com/users/${user}`)
@@ -22,13 +22,22 @@ async function getGitHubUser() {
   input.value = ''
 }
 
+function enterUsername() {
+  const div = document.createElement('div')
+  div.className = 'alert'
+  div.appendChild(document.createTextNode('Enter UserName'))
+  const container = document.querySelector('.container')
+  const header = document.querySelector('.header')
+  container.insertBefore(div, header)
+}
+
 function clearDisplay() {
   document.getElementById('output').innerHTML = ''
 }
 
 function showAlert(profile) {
   profile = `
-    <div>${profile.message}</div>
+    <div class="card">${profile.message}</div>
   `
   document.getElementById('output').innerHTML = profile
 }
@@ -71,7 +80,7 @@ function displayUser(profile) {
         </div>
         <div class="card-social">
           <div class="social-item">
-          <i class="fas fa-map-marker-alt"></i><span>${profile.location}</span>
+            <i class="fas fa-map-marker-alt"></i><span>${profile.location}</span>
           </div>
           <div class="social-item">
             <i class="fab fa-github"></i><span><a href=${profile.html_url}>Github</a></span>
