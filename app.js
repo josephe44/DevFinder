@@ -1,3 +1,4 @@
+// * Event Listener for input and button
 const input = document.getElementById('user-input')
 const button = document
   .getElementById('btn')
@@ -5,6 +6,7 @@ const button = document
 
 input.addEventListener('click', clearDisplay)
 
+// * Getting Users From GitHub API
 async function getGitHubUser() {
   if (input.value === '') {
     enterUsername()
@@ -22,26 +24,42 @@ async function getGitHubUser() {
   input.value = ''
 }
 
+//* Alert for no user found
 function enterUsername() {
+  clearAlert()
   const div = document.createElement('div')
   div.className = 'alert'
   div.appendChild(document.createTextNode('Enter UserName'))
   const container = document.querySelector('.container')
-  const header = document.querySelector('.header')
-  container.insertBefore(div, header)
+  const search = document.querySelector('.search')
+  container.insertBefore(div, search)
+  setTimeout(() => {
+    clearAlert()
+  }, 2000)
 }
 
+//* Clear Alert
+function clearAlert() {
+  const alert = document.querySelector('.alert')
+  if (alert) {
+    alert.remove()
+  }
+}
+
+//* Clear Display
 function clearDisplay() {
   document.getElementById('output').innerHTML = ''
 }
 
+//* Show Alert when Username doesn't exist
 function showAlert(profile) {
   profile = `
-    <div class="card">${profile.message}</div>
+    <div class="card">User ${profile.message}</div>
   `
   document.getElementById('output').innerHTML = profile
 }
 
+// * Display User UI
 function displayUser(profile) {
   profile = `
       <div class="card">
