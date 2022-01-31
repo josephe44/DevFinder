@@ -6,7 +6,7 @@ const button = document
 
 input.addEventListener('click', clearDisplay)
 
-// * Getting Users From GitHub API
+// * Getting Users From GitHub API using Async await
 async function getGitHubUser() {
   if (input.value === '') {
     enterUsername()
@@ -15,6 +15,7 @@ async function getGitHubUser() {
     const profileResponse = await fetch(`https://api.github.com/users/${user}`)
     let profile = await profileResponse.json()
     console.log(profile)
+    //* IF conditions for the logic
     if (profile.message === 'Not Found') {
       showAlert(profile)
     } else {
@@ -26,6 +27,7 @@ async function getGitHubUser() {
 
 //* Alert for no user found
 function enterUsername() {
+  clearDisplay()
   clearAlert()
   const div = document.createElement('div')
   div.className = 'alert'
@@ -113,4 +115,27 @@ function displayUser(profile) {
       </div>
       `
   document.getElementById('output').innerHTML = profile
+}
+
+//TODO: Dark mode and light
+const changer = document.getElementById('changer')
+changer.addEventListener('click', themeChanger)
+
+function themeChanger() {
+  const theme = document.getElementById('theme')
+  if (theme.className === 'fas fa-sun') {
+    let change = document.querySelector('body')
+    change.style.background = '#f4f4f4'
+    change.style.color = '#141c2f'
+    change.style.transition = 'all 0.5s ease-in-out'
+    theme.className = 'fas fa-moon'
+  } else {
+    if (theme.className === 'fas fa-moon') {
+      let change = document.querySelector('body')
+      change.style.background = '#141c2f'
+      change.style.color = '#f4f4f4'
+      change.style.transition = 'all 0.5s ease-in-out'
+      theme.className = 'fas fa-sun'
+    }
+  }
 }
