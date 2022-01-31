@@ -33,6 +33,7 @@ body {
   font-weight: bold;
 }
 .header p > span {
+  font-size: 1.3rem;
   margin-left: 0.5rem;
   cursor: pointer;
 }
