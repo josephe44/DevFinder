@@ -77,7 +77,7 @@ function displayUser(profile) {
               <p>${profile.login}</p>
             </div>
             <div class="card-profile-date">
-              <p>${profile.created_at}</p>
+              <p>Joined ${formatDate(profile)}</p>
             </div>
           </div>
         </div>
@@ -100,13 +100,19 @@ function displayUser(profile) {
         </div>
         <div class="card-social">
           <div class="social-item">
-            <i class="fas fa-map-marker-alt"></i><span>${profile.location}</span>
+            <i class="fas fa-map-marker-alt"></i><span>${
+              profile.location
+            }</span>
           </div>
           <div class="social-item">
-            <i class="fab fa-github"></i><span><a href=${profile.html_url}>Github</a></span>
+            <i class="fab fa-github"></i><span><a href=${
+              profile.html_url
+            }>Github</a></span>
           </div>
           <div class="social-item">
-            <i class="fab fa-twitter"></i><span>${profile.twitter_username}</span>
+            <i class="fab fa-twitter"></i><span>${
+              profile.twitter_username
+            }</span>
           </div>
           <div class="social-item">
             <i class="fas fa-building"></i><span>${profile.company}</span>
@@ -115,6 +121,16 @@ function displayUser(profile) {
       </div>
       `
   document.getElementById('output').innerHTML = profile
+}
+
+function formatDate(profile) {
+  let date = new Date(profile.created_at)
+  let year = date.getFullYear()
+  let month = date.getMonth()
+  let day = date.getDate()
+  let dateFormat = `${day}-${month}-${year}`
+  return dateFormat
+  console.log(dateFormat)
 }
 
 //TODO: Dark mode and light
